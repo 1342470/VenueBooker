@@ -1,0 +1,14 @@
+<main class="mx-auto">
+    <div class="user">
+        <h2>{{user.first_name}} {{user.last_name}}</h2>
+        <p>Email: {{user.email}}</p>
+        <p>Gender: {{user.gender}}</p>
+        <p>IP: {{user.ip_address}}</p>
+        <p class="text-right">
+            <a href="/users">Back</a>
+            {{#if nextUser}}
+            <a href="/users/view/{{nextUser}}">Next user</a>
+            {{/if}}
+        </p>
+    </div>
+</main>

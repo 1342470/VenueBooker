@@ -1,0 +1,115 @@
+<main>
+    <h2>{{content}}</h2>
+    <section class="flex justify-between ml-3 mr-3">
+        <div class="flex gap-1">
+            <a class="label secondary" href="/users/?limit=5&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">5</a>
+            <a class="label secondary"
+                href="/users/?limit=10&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">10</a>
+            <a class="label secondary"
+                href="/users/?limit=20&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">20</a>
+            <a class="label secondary"
+                href="/users/?limit=50&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">50</a>
+            <a class="label secondary"
+                href="/users/?limit=100&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">100</a>
+        </div>
+
+        <div class="flex gap-1">
+
+            {{#if prevPage}}
+            <a class="label secondary" href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page=1">
+                |<< 
+            </a>
+            <a class="label secondary"
+                href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{prevPage}}">
+                << 
+            </a>
+            {{/if}}
+            {{#if nextPage}}
+            <a class="label secondary"
+                href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{nextPage}}">>></a>
+            <a class="label secondary"
+                href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{pages}}">>>|</a>
+
+            {{/if}}
+            <a href="/users/create" class="label primary">+</a>
+        </div>
+    </section>
+
+    <div class="m-3 flex flex-column">
+        <section class="label primary">
+            <div class="flex justify-around">
+                <p>{{startNum}} to {{endNum}} of {{total}} </p>
+                <p>page {{page}} of {{pages}}</p>
+            </div>
+        </section>
+        <section class="overflow-x">
+            <table class="table mx-auto mt-3">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="flex justify-between">
+                                <a href="/users/?limit={{limit}}&sortBy=id&sortOrder=desc&page={{page}}">ID</a>
+                                {{#ifeq sortBy "id"}}
+                                {{#ifeq sortOrder "asc"}}
+                                <a href="/users/?limit={{limit}}&sortBy=id&sortOrder=desc&page={{page}}">&#9650;</a>
+                                {{else}}
+                                <a href="/users/?limit={{limit}}&sortBy=id&sortOrder=asc&page={{page}}">&#9660;</a>
+                                {{/ifeq}}
+                                {{/ifeq}}
+                            </div>
+                        </th>
+                        <th>
+                            <div class="flex justify-between">
+                                <a href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=desc&page={{page}}">First name</a>
+                                {{#ifeq sortBy "first_name"}}
+                                {{#ifeq sortOrder "asc"}}
+                                <a href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=desc&page={{page}}">&#9650;</a>
+                                {{else}}
+                                <a href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=asc&page={{page}}">&#9660;</a>
+                                {{/ifeq}}
+                                {{/ifeq}}
+                            </div>
+                        </th>
+                        <th>
+                            <div class="flex justify-between">
+                                <a href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=desc&page={{page}}">Surname</a>
+                                {{#ifeq sortBy "last_name"}}
+                                {{#ifeq sortOrder "asc"}}
+                                <a href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=desc&page={{page}}">&#9650;</a>
+                                {{else}}
+                                <a href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=asc&page={{page}}">&#9660;</a>
+                                {{/ifeq}}
+                                {{/ifeq}}
+                            </div>
+                        </th>
+                        <th>
+                            <div class="flex justify-between">
+                                <a href="/users/?limit={{limit}}&sortBy=ip_address&sortOrder=desc&page={{page}}">IP Address</a>
+                                {{#ifeq sortBy "ip_address"}}
+                                {{#ifeq sortOrder "asc"}}
+                                <a href="/users/?limit={{limit}}&sortBy=ip_address&sortOrder=desc&page={{page}}">&#9650;</a>
+                                {{else}}
+                                <a href="/users/?limit={{limit}}&sortBy=ip_address&sortOrder=asc&page={{page}}">&#9660;</a>
+                                {{/ifeq}}
+                                {{/ifeq}}
+                            </div>
+                        </th>
+                        <th>Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td width="200px">{{first_name}}</td>
+                        <td width="200px">{{last_name}}</td>
+                        <td width="200px">{{ip_address}}</td>
+                        <td><a href="/users/view/{{id}}">Link</a></td>
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+        </section>
+    </div>
+</main>
