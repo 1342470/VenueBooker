@@ -12,20 +12,21 @@
 <body class="flex flex-column justify-between">
     <header class="flex justify-between align-items-center">
         <h1>
-            Hello {{username}}
+            Welcome {{username}}
         </h1>
        
-        {{#if username}}
+       
         <nav>
             <ul class="flex justify-between">
                 <li><a href="/">Home</a></li>
                 <li><a href="/users">Users</a></li>
-                <li><a href="/logout">Logout</a></li>
+                {{#if username}}<li><a href="/logout">Logout</a></li>  {{/if}}
+                {{#unless username}}<li><a href="/login">Login</a></li>{{/unless}}
                 <li><a href="/venues">Venues</a></li>
             </ul>
         </nav>
         
-        {{/if}}
+     
     </header>
     
          {{#if message}}
