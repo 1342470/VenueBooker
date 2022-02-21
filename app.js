@@ -10,7 +10,6 @@ const loginRouter = require('./routes/login');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const venues = require('./routes/venues');
-const test = require('./routes/test');
 //defines middleware funciton imports 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +20,6 @@ app.use('/', indexRouter);
 app.use('/users', accessTokenMiddleware, usersRouter);
 app.use('/venues', accessTokenMiddleware, venues)
 app.use('/login',loginRouter)
-app.use('/test',test)
 
 const hbs = exphbs.create({
     defaultLayout: 'main',
