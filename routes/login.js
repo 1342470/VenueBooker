@@ -12,7 +12,7 @@ router.get('/failed', (req, res) => {
 // define path for logout, set message to show user they have logged out and redirect them back to login page
 router.get('/logged-out', (req, res) => {
     message = "Logged out";
-    res.redirect('/');
+    res.redirect('/login');
 });
 
 // define home path 
