@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/',checkPassMiddleware, (req, res) => {
-    res.redirect('/test');
+    res.redirect('/');
 });
 
 module.exports = router;

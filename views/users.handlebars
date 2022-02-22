@@ -1,4 +1,19 @@
 <main>
+    <details>
+        <summary>Add user</summary>
+        <form id="addUser" method="post" name"addUserForm">
+    <label for = "fname">Users first name:</label>
+    <input type="text" id = "fName" placeholder="Given name" name = "name" required></input>
+    <label for = "sName">Users family Name:</label>
+    <input type="text" id = "sName" placeholder="Family name" name = "family name" required></input>
+    <label for = "contactForm">User Contact details:</label>
+    <input type="text" id = "contactForm" placeholder="Contact details" name = "contact details" required></input>
+    <label for = "VenueForm">Venue user Booked</label>
+    <input type="text" id = "VenueForm"placeholder="Venue booked" name = "venue booked" required></input>
+    <input type="submit" onclick="addUser" value="Sumbit">
+    </form>
+    </details>
+    
     <h2>{{content}}</h2>
     <section class="flex justify-between ml-3 mr-3">
         <div class="flex gap-1">
