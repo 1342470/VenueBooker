@@ -10,7 +10,7 @@
     <input type="text" id = "contactForm" placeholder="Contact details" name = "contact details" required></input>
     <label for = "VenueForm">Venue user Booked</label>
     <input type="text" id = "VenueForm"placeholder="Venue booked" name = "venue booked" required></input>
-    <input type="submit" onclick="addUser" value="Sumbit">
+    <input type="submit" value="Sumbit">
     </form>
     </details>
     
@@ -75,7 +75,7 @@
                         </th>
                         <th>
                             <div class="flex justify-between">
-                                <a href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=desc&page={{page}}">First name</a>
+                                <a href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=desc&page={{page}}">Given name</a>
                                 {{#ifeq sortBy "first_name"}}
                                 {{#ifeq sortOrder "asc"}}
                                 <a href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=desc&page={{page}}">&#9650;</a>
@@ -87,7 +87,7 @@
                         </th>
                         <th>
                             <div class="flex justify-between">
-                                <a href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=desc&page={{page}}">Surname</a>
+                                <a href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=desc&page={{page}}">Family name</a>
                                 {{#ifeq sortBy "last_name"}}
                                 {{#ifeq sortOrder "asc"}}
                                 <a href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=desc&page={{page}}">&#9650;</a>
@@ -99,12 +99,12 @@
                         </th>
                         <th>
                             <div class="flex justify-between">
-                                <a href="/users/?limit={{limit}}&sortBy=ip_address&sortOrder=desc&page={{page}}">IP Address</a>
-                                {{#ifeq sortBy "ip_address"}}
+                                <a href="/users/?limit={{limit}}&sortBy=venue&sortOrder=desc&page={{page}}">Venue</a>
+                                {{#ifeq sortBy "venue"}}
                                 {{#ifeq sortOrder "asc"}}
-                                <a href="/users/?limit={{limit}}&sortBy=ip_address&sortOrder=desc&page={{page}}">&#9650;</a>
+                                <a href="/users/?limit={{limit}}&sortBy=venue&sortOrder=desc&page={{page}}">&#9650;</a>
                                 {{else}}
-                                <a href="/users/?limit={{limit}}&sortBy=ip_address&sortOrder=asc&page={{page}}">&#9660;</a>
+                                <a href="/users/?limit={{limit}}&sortBy=venue&sortOrder=asc&page={{page}}">&#9660;</a>
                                 {{/ifeq}}
                                 {{/ifeq}}
                             </div>
@@ -118,8 +118,8 @@
                         <td>{{id}}</td>
                         <td width="200px">{{first_name}}</td>
                         <td width="200px">{{last_name}}</td>
-                        <td width="200px">{{ip_address}}</td>
-                        <td><a href="/users/view/{{id}}">Link</a></td>
+                        <td width="200px">{{venue}}</td>
+                        <td><a href="/users/view/{{id}}"> More details here</a></td>
                     </tr>
                     {{/each}}
 

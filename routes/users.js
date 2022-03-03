@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const addUserMiddleware = require('../functions/addUser.js');
+let message ="";
 
 const data = require('../data/data.json');
 router.get('/', (req, res) => {
@@ -19,6 +21,11 @@ router.get('/', (req, res) => {
     });
     const userData = sortedData.slice(start, end);
     const pages = Math.floor(total / limit);
+
+    router.get('/failed', (req, res) => {
+        message = "failed to add User";
+        res.redirect('/users');
+    });
 
     res.render('users', {
         title: 'Users',
@@ -65,6 +72,8 @@ router.post('create', (req, res) => {
     res.redirect('/users');
 });
 
-
+router.post('/', (req, res) => {
+    res.redirect('/users');
+});
 
 module.exports = router;

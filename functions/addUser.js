@@ -1,14 +1,15 @@
-var fs= require('fs');
+function handleSubmit(event) {
+    const fs = require('fs');
+    event.preventDefault();
+    const userData = new FormData(event.target);
+    JSON.stringify(Object.fromEntries(userData));
+    
+    fs.writeFileSync('userData',userData);
 
-const { JsonWebTokenError } = require("jsonwebtoken");
 
-let userData = document.getElementById("addUser");
-let newUser = new FormData(userData);
-
-JSON.stringify(Object.fromEntries(newUser));
-
-fs.writeFile("data.json",newUser,function(err){
-    if (err){
-        console.log(err);
-    }
-});
+    console.log({ data });
+  }
+  
+  module.exports = {
+    handleSubmit
+};
