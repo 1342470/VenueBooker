@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const addUserMiddleware = require('../functions/addUser.js');
-let message ="";
 
+const fs = require('fs');
+
+let message = "";
+
+//requrie the jsonfile
 const data = require('../data/data.json');
+var file = './data/data.json';
+
 router.get('/', (req, res) => {
     const limit = parseInt(req.query.limit) || 5;
     const page = parseInt(req.query.page) || 1;
@@ -68,7 +73,40 @@ router.get('/create/', (req, res) => {
 });
 
 
-router.post('create', (req, res) => {
+router.post('/create', (req, res) => {
+    //get all form values form request
+    var id = req.body.id;
+    var first_name = req.body.first_name;
+    var last_name = req.body.last_name;
+    var contact = req.body.contact;
+    var gender = req.body.gender;
+    var venue = req.body.venue;
+
+    var obj = {id:id,first_name:first_name,last_name:last_name,contact:contact,gender:gender,venue:venue};
+
+    //write post from values from above to file
+    fs.readFile(file, (err, data) => {
+        if (err) {
+            // console error
+            console.error(err);
+        }
+        //if no errors are found try writing data to file
+        else {
+            try {
+                const fileData = JSON.parse(data);
+
+                //Append object 
+                fileData.push(obj);
+
+                //Write to file data.json
+                return fs.writeFile(file, JSON.stringify(fileData), error => console.error)
+            
+            // if any exception happen log to console
+            } catch (exception) {
+                console.error(exception);
+            }
+        }
+    });
     res.redirect('/users');
 });
 

@@ -1,23 +1,28 @@
 <main>
     <details>
         <summary>Add user</summary>
-        <form id="addUser" method="post" name"addUserForm">
-    <label for = "fname">Users first name:</label>
-    <input type="text" id = "fName" placeholder="Given name" name = "name" required></input>
-    <label for = "sName">Users family Name:</label>
-    <input type="text" id = "sName" placeholder="Family name" name = "family name" required></input>
-    <label for = "contactForm">User Contact details:</label>
-    <input type="text" id = "contactForm" placeholder="Contact details" name = "contact details" required></input>
-    <label for = "VenueForm">Venue user Booked</label>
-    <input type="text" id = "VenueForm"placeholder="Venue booked" name = "venue booked" required></input>
-    <input type="submit" value="Sumbit">
-    </form>
+        <form action= "/users/create" id="addUser" method="post" name"addUserForm">
+            <label for="id">User ID:</label>
+            <input type="text" id="id" placeholder="user id" name="id" required></input>
+            <label for="fName">Users first name:</label>
+            <input type="text" id="fName" placeholder="Given name" name="first_name" required></input>
+            <label for="sName">Users family Name:</label>
+            <input type="text" id="sName" placeholder="Family name" name="last_name" required></input>
+            <label for="contactForm">User Contact details:</label>
+            <input type="text" id="contactForm" placeholder="Contact details" name="contact" required></input>
+            <label for="gender">Gender:</label>
+            <input type="text" id="gender" placeholder="gender" name="gender" required></input>
+            <label for="VenueForm">Venue user Booked</label>
+            <input type="text" id="VenueForm" placeholder="Venue booked" name="venue" required></input>
+            <input type="submit" value="Sumbit">
+        </form>
     </details>
-    
+
     <h2>{{content}}</h2>
     <section class="flex justify-between ml-3 mr-3">
         <div class="flex gap-1">
-            <a class="label secondary" href="/users/?limit=5&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">5</a>
+            <a class="label secondary"
+                href="/users/?limit=5&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">5</a>
             <a class="label secondary"
                 href="/users/?limit=10&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">10</a>
             <a class="label secondary"
@@ -32,21 +37,19 @@
 
             {{#if prevPage}}
             <a class="label secondary" href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page=1">
-                |<< 
-            </a>
-            <a class="label secondary"
-                href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{prevPage}}">
-                << 
-            </a>
-            {{/if}}
-            {{#if nextPage}}
-            <a class="label secondary"
-                href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{nextPage}}">>></a>
-            <a class="label secondary"
-                href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{pages}}">>>|</a>
+                |<< </a>
+                    <a class="label secondary"
+                        href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{prevPage}}">
+                        << </a>
+                            {{/if}}
+                            {{#if nextPage}}
+                            <a class="label secondary"
+                                href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{nextPage}}">>></a>
+                            <a class="label secondary"
+                                href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{pages}}">>>|</a>
 
-            {{/if}}
-            <a href="/users/create" class="label primary">+</a>
+                            {{/if}}
+                            <a href="/users/create" class="label primary">+</a>
         </div>
     </section>
 
@@ -75,24 +78,30 @@
                         </th>
                         <th>
                             <div class="flex justify-between">
-                                <a href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=desc&page={{page}}">Given name</a>
+                                <a href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=desc&page={{page}}">Given
+                                    name</a>
                                 {{#ifeq sortBy "first_name"}}
                                 {{#ifeq sortOrder "asc"}}
-                                <a href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=desc&page={{page}}">&#9650;</a>
+                                <a
+                                    href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=desc&page={{page}}">&#9650;</a>
                                 {{else}}
-                                <a href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=asc&page={{page}}">&#9660;</a>
+                                <a
+                                    href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=asc&page={{page}}">&#9660;</a>
                                 {{/ifeq}}
                                 {{/ifeq}}
                             </div>
                         </th>
                         <th>
                             <div class="flex justify-between">
-                                <a href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=desc&page={{page}}">Family name</a>
+                                <a href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=desc&page={{page}}">Family
+                                    name</a>
                                 {{#ifeq sortBy "last_name"}}
                                 {{#ifeq sortOrder "asc"}}
-                                <a href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=desc&page={{page}}">&#9650;</a>
+                                <a
+                                    href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=desc&page={{page}}">&#9650;</a>
                                 {{else}}
-                                <a href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=asc&page={{page}}">&#9660;</a>
+                                <a
+                                    href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=asc&page={{page}}">&#9660;</a>
                                 {{/ifeq}}
                                 {{/ifeq}}
                             </div>

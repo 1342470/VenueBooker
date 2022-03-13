@@ -1,4 +1,4 @@
-const { verifyAccessToken } = require('../functions/security.js');
+const { verifyAccessToken } = require('../data/functions/security.js');
 /**
  * Check the access token and redirect to login if it is invalid
  * 

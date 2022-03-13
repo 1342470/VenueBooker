@@ -1,4 +1,4 @@
-const { generateAccessToken,checkPass } = require('../functions/security.js');
+const { generateAccessToken,checkPass } = require('../data/functions/security.js');
 
 const checkPassMiddleware = (req, res, next) => {
     const { username, password } = req.body;
