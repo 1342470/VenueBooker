@@ -1,5 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+var imagesDir = require('path').join(__dirname,'/Images'); 
 const accessTokenMiddleware = require('./middleware/accessTokenMiddleware');
 
 const app = express();
@@ -9,6 +10,7 @@ const app = express();
 const loginRouter = require('./routes/login');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const SuccessRouter = require('./routes/Success');
 const venues = require('./routes/venues');
 //defines middleware funciton imports 
 app.use(express.json());
@@ -20,6 +22,9 @@ app.use('/', indexRouter);
 app.use('/users', accessTokenMiddleware, usersRouter);
 app.use('/venues', accessTokenMiddleware, venues)
 app.use('/login',loginRouter)
+app.use('/Success',SuccessRouter);
+//use path defined to allow access to images
+app.use(express.static(imagesDir));
 
 const hbs = exphbs.create({
     defaultLayout: 'main',

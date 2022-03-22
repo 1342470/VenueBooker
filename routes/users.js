@@ -51,11 +51,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/view/:id', (req, res) => {
-    const user = data.find(user => user.id === parseInt(req.params.id));
+    const user = data.find(user => user.id);
     res.render('user', {
         title: 'User: ' + user.first_name,
         user: user,
-        nextUser: user.id + 1 <= data.length ? user.id + 1 : null,
+        nextUser: user.id + user.id <= data.length ? user.id + 1 : null,
         back: req.headers['referer']
     });
 });
@@ -81,9 +81,9 @@ router.post('/create', (req, res) => {
     var contact = req.body.contact;
     var gender = req.body.gender;
     var venue = req.body.venue;
+    var date = req.body.date;
 
-    var obj = {id:id,first_name:first_name,last_name:last_name,contact:contact,gender:gender,venue:venue};
-
+    var obj = {id:id,first_name:first_name,last_name:last_name,contact:contact,gender:gender,date:date,venue:venue};
     //write post from values from above to file
     fs.readFile(file, (err, data) => {
         if (err) {

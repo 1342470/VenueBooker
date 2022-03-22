@@ -2,8 +2,10 @@
     <div class="user">
         <h2>{{user.first_name}} {{user.last_name}}</h2>
         <p>gender: {{user.gender}}</p>
-        <p>contact details: {{user.email}}</p>
+        <p>Date booked: {{user.date}}</p>
+        <p>contact details: {{user.contact}}</p>
         <p>Venue booked: {{user.venue}}</p>
+        
         <p class="text-right">
             <a href="/users">Back</a>
             {{#if nextUser}}
