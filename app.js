@@ -21,7 +21,7 @@ app.use(express.static('public'));
 
 //once all required files are defined above next the app must let express which pages will be used in the app
 app.use('/', indexRouter);
-app.use('/',accessTokenMiddleware, addVenueRouter)
+app.use('/newVenue',accessTokenMiddleware, addVenueRouter)
 app.use('/users', accessTokenMiddleware, usersRouter);
 app.use('/venues', accessTokenMiddleware, venues)
 app.use('/login',loginRouter)

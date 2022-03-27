@@ -1,6 +1,8 @@
 const express = require('express');
 const fs = require('fs');
-const venueList = JSON.parse(fs.readFileSync('./data/venues.json',"UTF8"));
+const data = require('../data/venues.json');
+var venueList = './data/venues.json';
+
 const router = express.Router();
 
 router.get('/',  (req, res) => {
@@ -11,12 +13,12 @@ router.get('/',  (req, res) => {
 });
 
 router.post('/addVenue', (req, res) => {
-    var id = file.length+1;
+    var id = venueList.length+1;
     var title = req.body.title;
-    var img = req.body.last_name;
-    var short = req.body.contact;
-    var bullets = req.body.gender;
-    var long = venueList[1].title;
+    var img = req.body.img;
+    var short = req.body.short;
+    var bullets = req.body.bullets;
+    var long = req.body.long;
 
     var obj = {id:id,title:title,img:img,short:short,bullets:bullets,long:long};
     //write post from values from above to file

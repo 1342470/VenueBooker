@@ -3,20 +3,79 @@
 <p>to add another venue for users to book please use the from below, once you have entered all data please submit the
     form using the buttom at the bottom</p>
 
-<form action="/addVenue/addVenue" id="newVenue" method="post" name"Booking form">
-    <label for="title">Name of veneue:</label>
-    <input type="text" id="tittle" placeholder="Name of venue" name="title" required></input>
-    <label for="img">URL of image:</label>
-    <input type="url" id="img" placeholder="Http://exampleimage.com" name="img" required></input>
-    <label for="short">Short discription of venue:</label>
-    <input type="text" id="short" placeholder="short details" name="short" required></input>
-    <label for="bullets">List of point that venue cater for:</label>
-    <input type="text" id="bullets" placeholder="Catering points" name="bullets" required></input>
-    <label for="long">Second point that venue cater for</label>
-    <input type="text" id="bullets2" placeholder="Second Catering points" name="bullets" required></input>
-    <label for="long">Third point that venue cater for</label>
-    <input type="text" id="bullets3" placeholder="Third Catering points" name="bullets" required></input>
-    <label for="long">Long discription of venue:</label>
-    <input type="text" id="long" placeholder="long discription" name="long" required></input>
-    <input type="submit" value="Sumbit">
-</form>
+<div class="card">
+    <form action="/newVenue/addVenue" id="addVenue" method="post" name"addVenueForm">
+        <h2>Add new venue</h2>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="title">Name of veneue:</label>
+                    <input type="text" id="tittle" placeholder="Name of venue" name="title" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="img">URL of image:</label>
+                    <input type="url" id="img" placeholder="Http://exampleimage.com" name="img" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="short">Short discription of venue:</label>
+                    <input type="text" id="short" placeholder="short details" name="short" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="bullets">List of point that venue cater for:</label>
+                    <input type="text" id="bullets" placeholder="Catering points" name="bullets" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="short">Short discription of venue:</label>
+                    <input type="text" id="short" placeholder="short details" name="short" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="bullets">List of point that venue cater for:</label>
+                    <input type="text" id="bullets" placeholder="Catering points" name="bullets" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="long">Second point that venue cater for</label>
+                    <input type="text" id="bullets2" placeholder="Second Catering points" name="bullets"
+                        required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="long">Third point that venue cater for</label>
+                    <input type="text" id="bullets3" placeholder="Third Catering points" name="bullets"
+                        required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="long">Long discription of venue:</label>
+                    <input type="text" id="long" placeholder="long discription" name="long" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <input type="submit" value="Submit">
+    </form>
+</div>
+</div>
+</div>
+</br>

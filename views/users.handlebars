@@ -1,24 +1,4 @@
 <main>
-    <details>
-        <summary>Add user</summary>
-        <form action= "/users/create" id="addUser" method="post" name"addUserForm">
-            <label for="id">User ID:</label>
-            <input type="number" id="id" placeholder="user id" name="id" required></input>
-            <label for="fName">Users first name:</label>
-            <input type="text" id="fName" placeholder="Given name" name="first_name" required></input>
-            <label for="sName">Users family Name:</label>
-            <input type="text" id="sName" placeholder="Family name" name="last_name" required></input>
-            <label for="contactForm">User Contact details:</label>
-            <input type="text" id="contactForm" placeholder="Contact details" name="contact" required></input>
-            <label for="gender">Gender:</label>
-            <input type="text" id="gender" placeholder="gender" name="gender" required></input>
-            <label for="VenueForm">Date Booked</label>
-            <input type="text" id="VenueForm" placeholder="date" name="date" required></input>
-            <label for="VenueForm">Venue user Booked</label>
-            <input type="text" id="VenueForm" placeholder="Venue booked" name="venue" required></input>
-            <input type="submit" value="Sumbit">
-        </form>
-    </details>
 
     <h2>{{content}}</h2>
     <section class="flex justify-between ml-3 mr-3">
@@ -51,7 +31,7 @@
                                 href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{pages}}">>>|</a>
 
                             {{/if}}
-                            <a href="/users/create" class="label primary">+</a>
+                            <a href="/users/create" class="label primary">Add user</a>
         </div>
     </section>
 

@@ -68,8 +68,11 @@ router.post('delete/:id', (req, res) => {
     res.redirect('/users');
 });
 
-router.get('/create/', (req, res) => {
-    res.send('index');
+router.get('/create', (req, res) => {
+    res.render('newUser', {
+        title: 'new user',
+        back: req.headers['referer']
+    });
 });
 
 

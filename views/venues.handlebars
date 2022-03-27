@@ -1,84 +1,83 @@
 <main>
     <h2>Welcome to our venues collection feel free to browser our number of venues if you would like to book a venue
         please select the book button under the venue of your choosing</h2>
-        {{!Using data from venues.json grab all data in file}}
-            {{#each venues}}
-        <article>
-            <a href="venues/book/{{id}}">Book now</a>
-        {{!display all title from file as a heading}}    
-            <h3>{{title}}</h3>
-            {{!insert image from path inside file and give the alt attubite the value of the title}}
-                <img src="{{img}}" alt="{{title}}">
-                <p>
-            {{!insert discriptions for a venues using the long  values from the json}}
-                    {{long}}
-                </p>
-                <details>
-                    <summary>
-            {{!insert discriptions for a venues using the short  values from the json}}            
-                        {{short}}
-                    </summary>
-                </details>
-                <ul>
+    <a href="/newVenue" id="addVenueButton" class="label primary">Add new venue</a>
+    {{!Using data from venues.json grab all data in file}}
+    {{#each venues}}
+    <article>
 
-                </ul>
-                {{! insert all bullest data into an unordered list}}
-                {{#each bullets}}
-                    <li>{{this}}</li>
-                {{/each}}
-                </ul>
-        </article>
-                
-            {{/each}}
-        {{!--     <h3>Hansleton</h3>
-            <img src="/Images/2015-05-09_0001.jpg" alt "Hansleton venue">
-            <a href="venues/book">Book now</a>
-            <details>
-                <summary>Details</summary>
-                <p>Hansleton a lovely venue for any all needs including</p>
-                <ul>
-                    <li>Weddings</li>
-                    <li>functions rooms</li>
-                    <li>large scale meeting</li>
-                </ul>
-                located in the highlands sk19 4af Hansleton wide fields surrounding the venue giving fantstic photo ops.
-                We are able to cater for up to 50 people in Hansleton.
-            </details>
+        {{!display all title from file as a heading}}
+        <h3>{{title}}</h3>
+        {{!insert image from path inside file and give the alt attubite the value of the title}}
+        <img src="{{img}}" alt="{{title}}">
+        {{!insert discriptions for a venues using the short values from the json}}
+        <p>{{short}}
 
-            <h3>Maskhoff</h3>
-            <img src="/Images/amazing-wedding-venues-london.jpg" alt "Maskhoff venue">
-            <p>Maskhoff a well suited venue for people wishing for a trishal Weddings located within the london area.
-            </p>
-            <details>
-                <summary>Details</summary>
-                <p>though best suited for Weddings we are also able to cater for</p>
-                <ul>
-                    <li>conventions</li>
-                    <li>functions rooms</li>
-                    <li>large scale meeting</li>
-                </ul>
-                located in london this veneue is taken stright out of one of your childhood story's, the tutor acutatke
-                makes for any style/themed event work fantsticly for its backdrop.Book now while you can.
-            </details>
+       </p>
+        <ul>
 
-            <h3>boclair house</h3>
-            <img src="/Images/boclair-house-1024x576.jpg" alt "boclair house venue">
-            <details>
-                <summary>Details</summary>
-                <p>The Boclair House is one of Glasgows most magnificent hotels and wedding venues.
-                    Exchange your vows in picturesque gardens and Victorian style wedding marquee. Close by Glasgow.
-                    Exclusive Use Venue. </p>
-                Situated in the immaculate gardens at the foot of Boclair Hill, our Glasgow wedding venue is a Tudor
-                Gothic Mansion known for its beautiful red sandstone exterior. Offering the perfect setting, our venue
-                boasts luxury interior including a grand ballroom for your celebration, and opulent suites for you and
-                your guests to enjoy.
-                With the entire venue to yourself, you can relax in the knowledge that you have complete privacy for
-                your special day.
-                <img src="/Images/Boclair-Bandstand.jpg" alt "Bandstand">
-                Following your exclusive event or wedding, Boclair offers accommodation in 12 stunning suites for your
-                guests to enjoy a peaceful night’s rest. Each room has been uniquely designed to provide an elegant
-                space that will make you feel comfortable from the moment you arrive.
-                Whatever room your guests stay in, we guarantee they will not be disappointed.
-                <img src="/Images/Boclair-Wedding-Top-Table.jpg" alt "top-table">
-            </details> --}}
+        </ul>
+        {{! insert all bullest data into an unordered list}}
+        {{#each bullets}}
+        <li>{{this}}</li>
+        {{/each}}
+        </ul> 
+        </br>
+        <p>{{long}}</p>
+        </br>
+        <a href="venues/book/{{id}}">Book {{title}} now</a>
+    </article>
+
+    {{/each}}
+    {{!-- <h3>Hansleton</h3>
+    <img src="/Images/2015-05-09_0001.jpg" alt "Hansleton venue">
+    <a href="venues/book">Book now</a>
+    <details>
+        <summary>Details</summary>
+        <p>Hansleton a lovely venue for any all needs including</p>
+        <ul>
+            <li>Weddings</li>
+            <li>functions rooms</li>
+            <li>large scale meeting</li>
+        </ul>
+        located in the highlands sk19 4af Hansleton wide fields surrounding the venue giving fantstic photo ops.
+        We are able to cater for up to 50 people in Hansleton.
+    </details>
+
+    <h3>Maskhoff</h3>
+    <img src="/Images/amazing-wedding-venues-london.jpg" alt "Maskhoff venue">
+    <p>Maskhoff a well suited venue for people wishing for a trishal Weddings located within the london area.
+    </p>
+    <details>
+        <summary>Details</summary>
+        <p>though best suited for Weddings we are also able to cater for</p>
+        <ul>
+            <li>conventions</li>
+            <li>functions rooms</li>
+            <li>large scale meeting</li>
+        </ul>
+        located in london this veneue is taken stright out of one of your childhood story's, the tutor acutatke
+        makes for any style/themed event work fantsticly for its backdrop.Book now while you can.
+    </details>
+
+    <h3>boclair house</h3>
+    <img src="/Images/boclair-house-1024x576.jpg" alt "boclair house venue">
+    <details>
+        <summary>Details</summary>
+        <p>The Boclair House is one of Glasgows most magnificent hotels and wedding venues.
+            Exchange your vows in picturesque gardens and Victorian style wedding marquee. Close by Glasgow.
+            Exclusive Use Venue. </p>
+        Situated in the immaculate gardens at the foot of Boclair Hill, our Glasgow wedding venue is a Tudor
+        Gothic Mansion known for its beautiful red sandstone exterior. Offering the perfect setting, our venue
+        boasts luxury interior including a grand ballroom for your celebration, and opulent suites for you and
+        your guests to enjoy.
+        With the entire venue to yourself, you can relax in the knowledge that you have complete privacy for
+        your special day.
+        <img src="/Images/Boclair-Bandstand.jpg" alt "Bandstand">
+        Following your exclusive event or wedding, Boclair offers accommodation in 12 stunning suites for your
+        guests to enjoy a peaceful night’s rest. Each room has been uniquely designed to provide an elegant
+        space that will make you feel comfortable from the moment you arrive.
+        Whatever room your guests stay in, we guarantee they will not be disappointed.
+        <img src="/Images/Boclair-Wedding-Top-Table.jpg" alt "top-table">
+    </details> --}}
 </main>
