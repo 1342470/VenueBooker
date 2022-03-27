@@ -8,6 +8,7 @@ const app = express();
 
 //constants that the app will use to import the files that are required.
 const loginRouter = require('./routes/login');
+const addVenueRouter = require('./routes/addVenue');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const successRouter = require('./routes/success');
@@ -20,6 +21,7 @@ app.use(express.static('public'));
 
 //once all required files are defined above next the app must let express which pages will be used in the app
 app.use('/', indexRouter);
+app.use('/',accessTokenMiddleware, addVenueRouter)
 app.use('/users', accessTokenMiddleware, usersRouter);
 app.use('/venues', accessTokenMiddleware, venues)
 app.use('/login',loginRouter)
