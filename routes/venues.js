@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
+const { title } = require('process');
 var file = './data/data.json';
+const venueList = JSON.parse(fs.readFileSync('./data/venues.json',"UTF8"));
+
 /**
  * defines the path of the page as well as some of the content that is displayed on the page
  */
@@ -9,15 +12,18 @@ router.get('/',  (req, res) => {
     res.render('venues', {
         title: 'Venues',
         content: 'Venues follow the instuctions below to start booking your next venues',
-        username: res.locals.username
+        username: res.locals.username,
+        venues:venueList
     });
 });
 
 
-router.get('/book',  (req, res) => {
+router.get('/book/:id',  (req, res) => {
+    const bookedVenue = venueList.find(venue=>venue.id===Number(req.params.id))
     res.render('booking', {
         title: 'Booking',
-        username: res.locals.username
+        username: res.locals.username,
+        venue:bookedVenue
     });
 });
 
@@ -27,14 +33,14 @@ router.get('/Success',  (req, res) => {
         username: res.locals.username
     });
 });
-router.post('/venue1', (req, res) => {
-    var id = req.body.id;
+router.post('/bookVenue', (req, res) => {
+    var id = file.length+1;
     var first_name = req.body.first_name;
     var last_name = req.body.last_name;
     var contact = req.body.contact;
     var gender = req.body.gender;
-    var venue = "Hansleton";
-    var date = req.body.date;
+    var venue = venueList[1].title;
+    var date =  Date.now();
 
     var obj = {id:id,first_name:first_name,last_name:last_name,contact:contact,gender:gender,date:date,venue:venue};
     //write post from values from above to file
@@ -62,23 +68,6 @@ router.post('/venue1', (req, res) => {
     });
     res.redirect('/Success');
 });
-
-router.post('/venue1', (req, res) => {
-    res.redirect('/users');
-});
-
-router.post('/venue1', (req, res) => {
-    res.redirect('/users');
-});
-
-router.post('/venue1', (req, res) => {
-    res.redirect('/users');
-});
-
-router.post('/venue1', (req, res) => {
-    res.redirect('/users');
-});
-
 
 
 module.exports = router;

@@ -1,5 +1,11 @@
 const { handleSubmit } = require('../functions/addUser.js');
 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 const addUserMiddleware = (req, res, next) => {
     try {
         handleSubmit(Event);

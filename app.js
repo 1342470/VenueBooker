@@ -10,9 +10,10 @@ const app = express();
 const loginRouter = require('./routes/login');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const SuccessRouter = require('./routes/Success');
+const successRouter = require('./routes/success');
 const venues = require('./routes/venues');
-//defines middleware funciton imports 
+
+//defines middleware function imports 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -22,7 +23,8 @@ app.use('/', indexRouter);
 app.use('/users', accessTokenMiddleware, usersRouter);
 app.use('/venues', accessTokenMiddleware, venues)
 app.use('/login',loginRouter)
-app.use('/Success',SuccessRouter);
+app.use('/success',successRouter);
+
 //use path defined to allow access to images
 app.use(express.static(imagesDir));
 

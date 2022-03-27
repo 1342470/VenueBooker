@@ -4,9 +4,9 @@ const { verifyAccessToken } = require('../data/functions/security.js');
  * 
  * @param {Object} req is the request sent the login form
  * @param {Object} res is the responce that it will be sent back after the req has been handled
- * @param {Function} next if the responce is succesfull it will send the user to the next part of the applutaion
+ * @param {Function} next if the response is succesfull it will send the user to the next part of the applutaion
  */
-const accessTokenMiddleware = (req, res, next) => {
+const accessTokenMiddleware = (req={}, res={}, next) => {
     if (req.headers.cookie) {
         const token = req.headers.cookie.split('=')[1];
         if (token) {

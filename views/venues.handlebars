@@ -1,8 +1,36 @@
 <main>
     <h2>Welcome to our venues collection feel free to browser our number of venues if you would like to book a venue
-        please select the book button under the venue of your choosing<h2>
+        please select the book button under the venue of your choosing</h2>
+        {{!Using data from venues.json grab all data in file}}
+            {{#each venues}}
+        <article>
+            <a href="venues/book/{{id}}">Book now</a>
+        {{!display all title from file as a heading}}    
+            <h3>{{title}}</h3>
+            {{!insert image from path inside file and give the alt attubite the value of the title}}
+                <img src="{{img}}" alt="{{title}}">
+                <p>
+            {{!insert discriptions for a venues using the long  values from the json}}
+                    {{long}}
+                </p>
+                <details>
+                    <summary>
+            {{!insert discriptions for a venues using the short  values from the json}}            
+                        {{short}}
+                    </summary>
+                </details>
+                <ul>
 
-            <h3>Hansleton</h3>
+                </ul>
+                {{! insert all bullest data into an unordered list}}
+                {{#each bullets}}
+                    <li>{{this}}</li>
+                {{/each}}
+                </ul>
+        </article>
+                
+            {{/each}}
+        {{!--     <h3>Hansleton</h3>
             <img src="/Images/2015-05-09_0001.jpg" alt "Hansleton venue">
             <a href="venues/book">Book now</a>
             <details>
@@ -52,5 +80,5 @@
                 space that will make you feel comfortable from the moment you arrive.
                 Whatever room your guests stay in, we guarantee they will not be disappointed.
                 <img src="/Images/Boclair-Wedding-Top-Table.jpg" alt "top-table">
-            </details>
+            </details> --}}
 </main>
