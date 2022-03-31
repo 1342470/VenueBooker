@@ -64,8 +64,13 @@ router.post('update/:id', (req, res) => {
     res.redirect('/users');
 });
 
-router.post('delete/:id', (req, res) => {
-    res.redirect('/users');
+router.get('/delete/:id', (req, res) => {
+    const user = data.find(user => user.id);
+    res.render('delete', {
+        title: 'Delete User: ' + user.first_name,
+        user: user,
+        back: req.headers['referer']
+    });
 });
 
 router.get('/create', (req, res) => {

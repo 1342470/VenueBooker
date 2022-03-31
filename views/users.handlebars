@@ -48,7 +48,7 @@
                     <tr>
                         <th>
                             <div class="flex justify-between">
-                                <a href="/users/?limit={{limit}}&sortBy=id&sortOrder=desc&page={{page}}">ID</a>
+                                <a class="tableLink" href="/users/?limit={{limit}}&sortBy=id&sortOrder=desc&page={{page}}">ID</a>
                                 {{#ifeq sortBy "id"}}
                                 {{#ifeq sortOrder "asc"}}
                                 <a href="/users/?limit={{limit}}&sortBy=id&sortOrder=desc&page={{page}}">&#9650;</a>
@@ -60,7 +60,7 @@
                         </th>
                         <th>
                             <div class="flex justify-between">
-                                <a href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=desc&page={{page}}">Given
+                                <a class="tableLink" href="/users/?limit={{limit}}&sortBy=first_name&sortOrder=desc&page={{page}}">Given
                                     name</a>
                                 {{#ifeq sortBy "first_name"}}
                                 {{#ifeq sortOrder "asc"}}
@@ -75,7 +75,7 @@
                         </th>
                         <th>
                             <div class="flex justify-between">
-                                <a href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=desc&page={{page}}">Family
+                                <a class="tableLink" href="/users/?limit={{limit}}&sortBy=last_name&sortOrder=desc&page={{page}}">Family
                                     name</a>
                                 {{#ifeq sortBy "last_name"}}
                                 {{#ifeq sortOrder "asc"}}
@@ -90,7 +90,7 @@
                         </th>
                         <th>
                             <div class="flex justify-between">
-                                <a href="/users/?limit={{limit}}&sortBy=venue&sortOrder=desc&page={{page}}">Venue</a>
+                                <a class="tableLink" href="/users/?limit={{limit}}&sortBy=venue&sortOrder=desc&page={{page}}">Venue</a>
                                 {{#ifeq sortBy "venue"}}
                                 {{#ifeq sortOrder "asc"}}
                                 <a href="/users/?limit={{limit}}&sortBy=venue&sortOrder=desc&page={{page}}">&#9650;</a>
@@ -101,6 +101,8 @@
                             </div>
                         </th>
                         <th>Detail</th>
+                        <th>Remove info</th>
+                        <th>Update info</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -110,7 +112,9 @@
                         <td width="200px">{{first_name}}</td>
                         <td width="200px">{{last_name}}</td>
                         <td width="200px">{{venue}}</td>
-                        <td><a href="/users/view/{{id}}"> More details here</a></td>
+                        <td><a class="tableBtn" href="/users/view/{{id}}"> More details here</a></td>
+                        <td><a class="tableBtn" href="/users/delete/{{id}}"> Remove</a></td>
+                        <td><a class="tableBtn" href="/users/update/{{id}}"> Update</a></td>
                     </tr>
                     {{/each}}
 

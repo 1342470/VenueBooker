@@ -34,12 +34,12 @@ router.get('/Success',  (req, res) => {
     });
 });
 router.post('/bookVenue', (req, res) => {
-    var id = file.length+1;
+    var id = Date.now()-10;
     var first_name = req.body.first_name;
     var last_name = req.body.last_name;
     var contact = req.body.contact;
     var gender = req.body.gender;
-    var venue = venueList[1].title;
+    var venue = req.body.venue;
     var date =  Date.now();
 
     var obj = {id:id,first_name:first_name,last_name:last_name,contact:contact,gender:gender,date:date,venue:venue};
