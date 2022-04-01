@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const fs = require('fs');
 
 let message = "";
@@ -8,6 +7,7 @@ let message = "";
 //requrie the jsonfile
 const data = require('../data/data.json');
 var file = './data/data.json';
+const removeFunction = require('../data/functions/removeById.js');
 
 router.get('/', (req, res) => {
     const limit = parseInt(req.query.limit) || 5;
@@ -73,6 +73,34 @@ router.get('/delete/:id', (req, res) => {
     });
 });
 
+router.post('/delete', (req, res) => {
+    const id = req.body.id;
+    console.log(id);
+
+    fs.readFile(file, (err, data) => {
+        if (err) {
+            // console error
+            console.error(err);
+        }
+        //if no errors are found try writing data to file
+        else {
+            try {
+                const fileData = JSON.parse(data);
+                //envoke function from imported module
+                removeFunction.removeById(fileData, id);
+                //Write to file data.json
+                return fs.writeFile(file, JSON.stringify(fileData), error => console.error)
+                // if any exception happen log to console
+            } catch (exception) {
+                console.error(exception);
+            }
+        }
+    });
+
+    res.redirect('/users');
+
+});
+
 router.get('/create', (req, res) => {
     res.render('newUser', {
         title: 'new user',
@@ -91,7 +119,7 @@ router.post('/create', (req, res) => {
     var venue = req.body.venue;
     var date = req.body.date;
 
-    var obj = {id:id,first_name:first_name,last_name:last_name,contact:contact,gender:gender,date:date,venue:venue};
+    var obj = { id: id, first_name: first_name, last_name: last_name, contact: contact, gender: gender, date: date, venue: venue };
     //write post from values from above to file
     fs.readFile(file, (err, data) => {
         if (err) {
@@ -108,8 +136,8 @@ router.post('/create', (req, res) => {
 
                 //Write to file data.json
                 return fs.writeFile(file, JSON.stringify(fileData), error => console.error)
-            
-            // if any exception happen log to console
+
+                // if any exception happen log to console
             } catch (exception) {
                 console.error(exception);
             }

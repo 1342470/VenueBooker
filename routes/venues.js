@@ -34,7 +34,7 @@ router.get('/Success',  (req, res) => {
     });
 });
 router.post('/bookVenue', (req, res) => {
-    var id = Date.now()-10;
+    var id = Date.now()/4;
     var first_name = req.body.first_name;
     var last_name = req.body.last_name;
     var contact = req.body.contact;
