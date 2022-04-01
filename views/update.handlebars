@@ -1,0 +1,82 @@
+<h2>Update venue</h2>
+<h2>You are updating  {{venues.title}}</h2>
+
+<p>to update venue data please enter the new data in the form below</p>
+
+<div class="card">
+    <form action="/users/update}" id="Venue" method="post" name"addVenueForm">
+        <h2>Add new venue</h2>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="title">Name of veneue:</label>
+                    <input type="text" id="title" placeholder="Name of venue" name="title" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="img">URL of image:</label>
+                    <input type="url" id="img" placeholder="Http://exampleimage.com" name="img" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="short">Short discription of venue:</label>
+                    <input type="text" id="short" placeholder="short details" name="short" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="bullets">List of point that venue cater for:</label>
+                    <input type="text" id="bullets" placeholder="Catering points" name="bullets" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="short">Short discription of venue:</label>
+                    <input type="text" id="short" placeholder="short details" name="short" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="bullets">List of point that venue cater for:</label>
+                    <input type="text" id="bullets" placeholder="Catering points" name="bullets" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="long">Second point that venue cater for</label>
+                    <input type="text" id="bullets2" placeholder="Second Catering points" name="bullets"
+                        required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="long">Third point that venue cater for</label>
+                    <input type="text" id="bullets3" placeholder="Third Catering points" name="bullets"
+                        required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="long">Long discription of venue:</label>
+                    <input type="text" id="long" placeholder="long discription" name="long" required></input>
+                </div>
+            </div>
+
+            <div class="col">
+                <input type="hidden" id="venue" name="venue" value="{{venue.title}}">
+                <input type="submit" value="Submit">
+    </form>
+</div>
+</div>
+</div>
+</br>

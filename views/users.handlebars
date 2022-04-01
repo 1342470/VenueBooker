@@ -31,15 +31,15 @@
                                 href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{pages}}">>>|</a>
 
                             {{/if}}
-                            <a href="/users/create" class="label primary">Add user</a>
+                            <a id="addUserBtn"href="/users/create" class="label primary">Add user</a>
         </div>
     </section>
 
     <div class="m-3 flex flex-column">
         <section class="label primary">
             <div class="flex justify-around">
-                <p>{{startNum}} to {{endNum}} of {{total}} </p>
-                <p>page {{page}} of {{pages}}</p>
+                <p class="pageInfo">{{startNum}} to {{endNum}} of {{total}} </p>
+                <p class="pageInfo">page {{page}} of {{pages}}</p>
             </div>
         </section>
         <section class="overflow-x">

@@ -53,6 +53,7 @@
 
 p {
     margin: 0;
+    line-height: 1.5;
 }
 
 body {
@@ -71,8 +72,9 @@ header {
 }
 
 a {
-    text-decoration: none;
-    color: #ffffff;
+    text-decoration: underline;
+    color: hsl(0, 0%, 100%);
+
 }
 
 a:hover {
@@ -175,11 +177,11 @@ footer {
 }
 
 .table th{
-    color: #333;
+    color: #000;
 }
 
 .tableLink {
-    color: #333;
+    color: #000;
 }
 
 .tableBtn{
@@ -192,6 +194,15 @@ footer {
     border-right: 1px solid #d2d2d2;
     border-bottom: 1px solid #d2d2d2;
 
+}
+
+#addUserBtn{
+    color: #000;
+}
+
+.pageInfo{
+    color: #333;
+    line-height: 1.5;
 }
 
 #addVenueButton {

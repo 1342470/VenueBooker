@@ -7,6 +7,7 @@ let message = "";
 //requrie the jsonfile
 const data = require('../data/data.json');
 var file = './data/data.json';
+const VenuesData = require('../data/venues.json')
 const removeFunction = require('../data/functions/removeById.js');
 
 router.get('/', (req, res) => {
@@ -60,8 +61,13 @@ router.get('/view/:id', (req, res) => {
     });
 });
 
-router.post('update/:id', (req, res) => {
-    res.redirect('/users');
+router.get('/update/:id', (req, res) => {
+    const venues = VenuesData.find(venue => venue.title);
+    res.render('update', {
+        title: 'Updating  veneu: ' + venues.title,
+        back: req.headers['referer']
+    });
+    console.log(venues)
 });
 
 router.get('/delete/:id', (req, res) => {
