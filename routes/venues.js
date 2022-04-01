@@ -3,7 +3,10 @@ const router = express.Router();
 const fs = require('fs');
 const { title } = require('process');
 var file = './data/data.json';
+const data = require('../data/venues.json')
+const venueFile='./data/venues.json'
 const venueList = JSON.parse(fs.readFileSync('./data/venues.json',"UTF8"));
+const removeFunction = require('../data/functions/removeById.js');
 
 /**
  * defines the path of the page as well as some of the content that is displayed on the page
@@ -24,6 +27,41 @@ router.get('/book/:id',  (req, res) => {
         title: 'Booking',
         username: res.locals.username,
         venue:bookedVenue
+    });
+});
+
+router.get('/data', (req, res) => {
+    const limit = parseInt(req.query.limit) || 5;
+    const page = parseInt(req.query.page) || 1;
+    const start = (page - 1) * limit;
+    const end = parseInt(start) + limit;
+    const sortBy = req.query.sortBy || 'id';
+    const sortOrder = req.query.sortOrder || 'asc';
+    const total = venueList.length;
+    const sortedData = venueList.sort((a, b) => {
+        if (sortOrder === 'asc') {
+            return a[sortBy] > b[sortBy] ? 1 : -1;
+        } else {
+            return a[sortBy] < b[sortBy] ? 1 : -1;
+        }
+    });
+    const venue = sortedData.slice(start, end);
+    const pages = Math.floor(total / limit);
+
+    res.render('venuesInfo', {
+        title: 'Venue Info',
+        username: res.locals.username,
+        users: venue,
+        page: page,
+        pages: pages,
+        nextPage: page < pages ? page + 1 : null,
+        prevPage: page > 1 ? page - 1 : null,
+        sortBy: sortBy,
+        sortOrder: sortOrder,
+        limit: limit,
+        startNum: start + 1,
+        endNum: end,
+        total: total
     });
 });
 
@@ -67,6 +105,44 @@ router.post('/bookVenue', (req, res) => {
         }
     });
     res.redirect('/Success');
+});
+
+
+router.get('/delete/:id', (req, res) => {
+    const venueDel = data.find(venues => venues.id);
+    res.render('deleteVenue', {
+        title: 'Delete Venue: ' + venueDel.title,
+        user: venueDel,
+        back: req.headers['referer']
+    });
+});
+
+router.post('/delete', (req, res) => {
+    const id = req.body.id;
+    console.log(id);
+
+    fs.readFile(venueFile, (err, data) => {
+        if (err) {
+            // console error
+            console.error(err);
+        }
+        //if no errors are found try writing data to file
+        else {
+            try {
+                const fileData = JSON.parse(data);
+                //envoke function from imported module
+                removeFunction.removeById(fileData, id);
+                //Write to file data.json
+                return fs.writeFile(venueFile, JSON.stringify(fileData), error => console.error)
+                // if any exception happen log to console
+            } catch (exception) {
+                console.error(exception);
+            }
+        }
+    });
+
+    res.redirect('/venues/data');
+
 });
 
 

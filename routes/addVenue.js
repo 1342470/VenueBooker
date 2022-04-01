@@ -13,7 +13,7 @@ router.get('/',  (req, res) => {
 });
 
 router.post('/addVenue', (req, res) => {
-    var id = venueList.length+1;
+    var id = Date.now()/4;
     var title = req.body.title;
     var img = req.body.img;
     var short = req.body.short;

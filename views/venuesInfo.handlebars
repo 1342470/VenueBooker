@@ -1,0 +1,166 @@
+<main>
+
+    <h2>{{content}}</h2>
+    <section class="flex justify-between ml-3 mr-3">
+        <div class="flex gap-1">
+            <a class="label secondary"
+                href="/venues/data/?limit=5&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">5</a>
+            <a class="label secondary"
+                href="/venues/data/?limit=10&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">10</a>
+            <a class="label secondary"
+                href="/venues/data/?limit=20&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">20</a>
+            <a class="label secondary"
+                href="/venues/data/?limit=50&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">50</a>
+            <a class="label secondary"
+                href="/venues/data/?limit=100&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{page}}">100</a>
+            <a href="/newVenue" id="addVenueButton" class="label secondary">Add new venue</a>
+        </div>
+
+        <div class="flex gap-1">
+
+            {{#if prevPage}}
+            <a class="label secondary" href="/users/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page=1">
+                |<< </a>
+                    <a class="label secondary"
+                        href="/venues/data/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{prevPage}}">
+                        << </a>
+                            {{/if}}
+                            {{#if nextPage}}
+                            <a class="label secondary"
+                                href="/venues/data/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{nextPage}}">>></a>
+                            <a class="label secondary"
+                                href="/venues/data/?limit={{limit}}&sortBy={{sortBy}}&sortOrder={{sortOrder}}&page={{pages}}">>>|</a>
+
+                            {{/if}}
+        </div>
+    </section>
+
+    <div class="m-3 flex flex-column">
+        <section class="label primary">
+            <div class="flex justify-around">
+                <p class="pageInfo">{{startNum}} to {{endNum}} of {{total}} </p>
+                <p class="pageInfo">page {{page}} of {{pages}}</p>
+            </div>
+        </section>
+        <section class="overflow-x">
+            <table class="table mx-auto mt-3">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="flex justify-between">
+                                <a class="tableLink"
+                                    href="/venues/data/?limit={{limit}}&sortBy=id&sortOrder=desc&page={{page}}">ID</a>
+                                {{#ifeq sortBy "id"}}
+                                {{#ifeq sortOrder "asc"}}
+                                <a
+                                    href="/venues/data/?limit={{limit}}&sortBy=id&sortOrder=desc&page={{page}}">&#9650;</a>
+                                {{else}}
+                                <a
+                                    href="/venues/data/?limit={{limit}}&sortBy=id&sortOrder=asc&page={{page}}">&#9660;</a>
+                                {{/ifeq}}
+                                {{/ifeq}}
+                            </div>
+                        </th>
+                        <th>
+                            <div class="flex justify-between">
+                                <a class="tableLink"
+                                    href="/venues/data/?limit={{limit}}&sortBy=title&sortOrder=desc&page={{page}}">Name
+                                    of venue</a>
+                                {{#ifeq sortBy "title"}}
+                                {{#ifeq sortOrder "asc"}}
+                                <a
+                                    href="/venues/data?limit={{limit}}&sortBy=title&sortOrder=desc&page={{page}}">&#9650;</a>
+                                {{else}}
+                                <a
+                                    href="/venues/data?limit={{limit}}&sortBy=title&sortOrder=asc&page={{page}}">&#9660;</a>
+                                {{/ifeq}}
+                                {{/ifeq}}
+                            </div>
+                        </th>
+                        <th>
+                            <div class="flex justify-between">
+                                <a class="tableLink"
+                                    href="/venues/data?limit={{limit}}&sortBy=img&sortOrder=desc&page={{page}}">Image of
+                                    venue</a>
+                                {{#ifeq sortBy "img"}}
+                                {{#ifeq sortOrder "asc"}}
+                                <a
+                                    href="/venues/data?limit={{limit}}&sortBy=img&sortOrder=desc&page={{page}}">&#9650;</a>
+                                {{else}}
+                                <a
+                                    href="/venues/data?limit={{limit}}&sortBy=img&sortOrder=asc&page={{page}}">&#9660;</a>
+                                {{/ifeq}}
+                                {{/ifeq}}
+                            </div>
+                        </th>
+                        <th>
+                            <div class="flex justify-between">
+                                <a class="tableLink"
+                                    href="/venues/data?limit={{limit}}&sortBy=short&sortOrder=desc&page={{page}}">Short
+                                    discription</a>
+                                {{#ifeq sortBy "short"}}
+                                {{#ifeq sortOrder "asc"}}
+                                <a
+                                    href="/venues/data?limit={{limit}}&sortBy=short&sortOrder=desc&page={{page}}">&#9650;</a>
+                                {{else}}
+                                <a
+                                    href="/venues/data?limit={{limit}}&sortBy=short&sortOrder=asc&page={{page}}">&#9660;</a>
+                                {{/ifeq}}
+                                {{/ifeq}}
+                            </div>
+                        </th>
+                        <th>
+                            <div class="flex justify-between">
+                                <a class="tableLink"
+                                    href="/venues/data?limit={{limit}}&sortBy=bullets&sortOrder=desc&page={{page}}">bullets
+                                    discription</a>
+                                {{#ifeq sortBy "bullets"}}
+                                {{#ifeq sortOrder "asc"}}
+                                <a
+                                    href="/venues/data?limit={{limit}}&sortBy=bullets&sortOrder=desc&page={{page}}">&#9650;</a>
+                                {{else}}
+                                <a
+                                    href="/venues/data?limit={{limit}}&sortBy=bullets&sortOrder=asc&page={{page}}">&#9660;</a>
+                                {{/ifeq}}
+                                {{/ifeq}}
+                            </div>
+                        </th>
+                        <th>
+                            <div class="flex justify-between">
+                                <a class="tableLink"
+                                    href="/venues/data?limit={{limit}}&sortBy=Long&sortOrder=desc&page={{page}}">Long
+                                    discription</a>
+                                {{#ifeq sortBy "short"}}
+                                {{#ifeq sortOrder "asc"}}
+                                <a
+                                    href="/venues/data?limit={{limit}}&sortBy=Long&sortOrder=desc&page={{page}}">&#9650;</a>
+                                {{else}}
+                                <a
+                                    href="/venues/data?limit={{limit}}&sortBy=Long&sortOrder=asc&page={{page}}">&#9660;</a>
+                                {{/ifeq}}
+                                {{/ifeq}}
+                            </div>
+                        </th>
+                        <th>Remove info</th>
+                        <th>Update info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td width="200px">{{title}}</td>
+                        <td width="200px">{{img}}</td>
+                        <td width="200px">{{short}}</td>
+                        <td width="200px">{{bullets}}</td>
+                        <td width="200px">{{long}}</td>
+                        <td><a class="tableBtn" href="/venues/delete/{{id}}"> Remove</a></td>
+                        <td><a class="tableBtn" href="/venues/update/{{id}}"> Update</a></td>
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+        </section>
+    </div>
+</main>

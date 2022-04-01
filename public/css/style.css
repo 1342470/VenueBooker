@@ -79,12 +79,15 @@ a {
 
 a:hover {
     text-decoration: underline;
-    color: rgb(252, 0, 0);
+    color: rgb(255, 255, 255);
 }
+
 
 a:visited {
     color: rgb(255, 255, 255);
 }
+
+
 
 
 main {
@@ -170,9 +173,9 @@ footer {
 
 .table th {
     padding: 10px 5px;
-    background-color: #e2e2e2;
+    background-color: #e40000;
     text-align: left;
-    border: 1px solid #d2d2d2;
+    border: 1px solid #861313;
 
 }
 
