@@ -141,6 +141,22 @@
                                 {{/ifeq}}
                             </div>
                         </th>
+                         <th>
+                            <div class="flex justify-between">
+                                <a class="tableLink"
+                                    href="/venues/data?limit={{timesBooked}}&sortBy=Long&sortOrder=desc&page={{page}}">Times booked
+                                    </a>
+                                {{#ifeq sortBy "short"}}
+                                {{#ifeq sortOrder "asc"}}
+                                <a
+                                    href="/venues/data?limit={{timesBooked}}&sortBy=Long&sortOrder=desc&page={{page}}">&#9650;</a>
+                                {{else}}
+                                <a
+                                    href="/venues/data?limit={{timesBooked}}&sortBy=Long&sortOrder=asc&page={{page}}">&#9660;</a>
+                                {{/ifeq}}
+                                {{/ifeq}}
+                            </div>
+                        </th>
                         <th>Remove info</th>
                         <th>Update info</th>
                     </tr>
@@ -154,6 +170,7 @@
                         <td width="200px">{{short}}</td>
                         <td width="200px">{{bullets}}</td>
                         <td width="200px">{{long}}</td>
+                         <td width="200px">{{timesBooked}}</td>
                         <td><a class="tableBtn" href="/venues/delete/{{id}}"> Remove</a></td>
                         <td><a class="tableBtn" href="/venues/update/{{id}}"> Update</a></td>
                     </tr>

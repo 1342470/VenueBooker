@@ -4,7 +4,7 @@ const fs = require('fs');
 const { title } = require('process');
 var file = './data/data.json';
 const data = require('../data/venues.json')
-const venueFile='./data/venues.json'
+const venueFile='../data/venues.json'
 const venueList = JSON.parse(fs.readFileSync('./data/venues.json',"UTF8"));
 const removeFunction = require('../data/functions/removeById.js');
 
@@ -78,9 +78,15 @@ router.post('/bookVenue', (req, res) => {
     var contact = req.body.contact;
     var gender = req.body.gender;
     var venue = req.body.venue;
+    var timeSlot = req.body.timeSlot
     var date =  Date.now();
 
-    var obj = {id:id,first_name:first_name,last_name:last_name,contact:contact,gender:gender,date:date,venue:venue};
+    var obj = {id:id,first_name:first_name,last_name:last_name,contact:contact,gender:gender,date:date,venue:venue,timeSlot:timeSlot};
+    
+   
+
+  
+
     //write post from values from above to file
     fs.readFile(file, (err, data) => {
         if (err) {

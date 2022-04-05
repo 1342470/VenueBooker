@@ -52,7 +52,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/view/:id', (req, res) => {
-    const user = data.find(user => user.id);
+    const user = data.find(user => user.id === parseInt(req.params.id));
     res.render('user', {
         title: 'User: ' + user.first_name,
         user: user,
