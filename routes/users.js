@@ -4,20 +4,20 @@ const fs = require('fs');
 
 let message = "";
 
-//requrie the jsonfile
+//require the jsonfile
+const file = './data/data.json';
 const data = require('../data/data.json');
-var file = './data/data.json';
 const VenuesData = require('../data/venues.json')
 const removeFunction = require('../data/functions/removeById.js');
 
 router.get('/', (req, res) => {
-    const limit = parseInt(req.query.limit) || 5;
+    const total = data.length;
+    const limit = parseInt(req.query.limit)<total?parseInt(req.query.limit):total;
     const page = parseInt(req.query.page) || 1;
     const start = (page - 1) * limit;
     const end = parseInt(start) + limit;
     const sortBy = req.query.sortBy || 'id';
     const sortOrder = req.query.sortOrder || 'asc';
-    const total = data.length;
     const sortedData = data.sort((a, b) => {
         if (sortOrder === 'asc') {
             return a[sortBy] > b[sortBy] ? 1 : -1;
@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
         }
     });
     const userData = sortedData.slice(start, end);
-    const pages = Math.floor(total / limit);
+    const pages = Math.floor(total / limit)||1;
 
     router.get('/failed', (req, res) => {
         message = "failed to add User";
@@ -117,15 +117,15 @@ router.get('/create', (req, res) => {
 
 router.post('/create', (req, res) => {
     //get all form values form request
-    var id = req.body.id;
-    var first_name = req.body.first_name;
-    var last_name = req.body.last_name;
-    var contact = req.body.contact;
-    var gender = req.body.gender;
-    var venue = req.body.venue;
-    var date = req.body.date;
+    let id = req.body.id;
+    let first_name = req.body.first_name;
+    let last_name = req.body.last_name;
+    let contact = req.body.contact;
+    let gender = req.body.gender;
+    let venue = req.body.venue;
+    let date = req.body.date;
 
-    var obj = { id: id, first_name: first_name, last_name: last_name, contact: contact, gender: gender, date: date, venue: venue };
+    let obj = { id, first_name, last_name, contact, gender, date, venue };
     //write post from values from above to file
     fs.readFile(file, (err, data) => {
         if (err) {

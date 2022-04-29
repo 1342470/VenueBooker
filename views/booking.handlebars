@@ -1,16 +1,22 @@
 You are booking {{venue.title}}
 
-<form action="/venues/bookVenue" id="newVenue" method="post" name"Booking form">
-    <label for="fName">Users first name:</label>
+<form action="/venues/bookVenue" id="newVenue" method="post">
+<fieldset>
+    <label for="fName">First name:</label>
     <input type="text" id="fName" placeholder="Given name" name="first_name" required></input>
-    <label for="sName">Users family Name:</label>
+    <label for="sName">Surname:</label>
     <input type="text" id="sName" placeholder="Family name" name="last_name" required></input>
-    <label for="contactForm">User Contact details:</label>
+</fieldset>
+<fieldset>
+    <label for="contactForm">Phone:</label>
     <input type="text" id="contactForm" placeholder="Contact details" name="contact" required></input>
+</fieldset>
+<fieldset>
     <label for="gender">Gender:</label>
     <input type="text" id="gender" placeholder="gender" name="gender" required></input>
     <label for="timeSlot">Time slot:</label>
     <input type="text" id="timeSlot" placeholder="time slot" name="timeSlot" required></input>
     <input type="hidden" id="venue" name="venue" value="{{venue.title}}"></input>
+</fieldset>
     <input type="submit" value="Sumbit">
 </form>

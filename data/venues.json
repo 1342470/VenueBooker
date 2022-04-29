@@ -1,1 +1,50 @@
-[{"id":1,"title":"Hansleton","img":"/img/2015-05-09_0001.jpg","short":"Hansleton a lovely venue for any all needs including","bullets":["Weddings","Function rooms","Corporate meetings"],"long":"located in the highlands sk19 4af Hansleton wide fields surrounding the venue giving fantstic photo ops. We are able to cater for up to 50 people in Hansleton."},{"id":2,"title":"Maskhoff","img":"/img/amazing-wedding-venues-london.jpg","short":"Maskhoff a well suited venue for people wishing for a trishal Weddings located within the london area.","bullets":["Weddings","Function rooms","Corporate meetings"],"long":"located in the highlands sk19 4af Hansleton wide fields surrounding the venue giving fantstic photo ops."},{"id":3,"title":"boclair house","img":"/img/boclair-house-1024x576.jpg","short":"The Boclair House is one of Glasgows most magnificent hotels and wedding venues.Exchange your vows in picturesque gardens and Victorian style wedding marquee. Close by Glasgow.Exclusive Use Venue.","bullets":["Weddings","Function rooms","Corporate meetings"],"long":" Situated in the immaculate gardens at the foot of Boclair Hill, our Glasgow wedding venue is a Tudor Gothic Mansion known for its beautiful red sandstone exterior. Offering the perfect setting, our venueboasts luxury interior including a grand ballroom for your celebration, and opulent suites for you and your guests to enjoy.With the entire venue to yourself, you can relax in the knowledge that you have complete privacy for your special day."},{"id":4,"title":"Hansleton4","img":"/img/2015-05-09_0001.jpg","short":"Hansleton a lovely venue for any all needs including","bullets":["Weddings","Function rooms","Corporate meetings"],"long":"located in the highlands sk19 4af Hansleton wide fields surrounding the venue giving fantstic photo ops. We are able to cater for up to 50 people in Hansleton."},{"id":19,"title":"Camalot","img":"https://media-cdn.tripadvisor.com/media/photo-m/1280/1d/9c/2d/ab/camelot-castle-hotel.jpg","short":"castle of camalot","bullets":["wedding","hotel"],"long":"example of long disctioption here"}]
+[
+  {
+    "id": 1,
+    "title": "Hansleton",
+    "img": "/img/2015-05-09_0001.jpg",
+    "short": "Hansleton a lovely venue for any all needs including",
+    "bullets": ["Weddings", "Function rooms", "Corporate meetings"],
+    "long": "located in the highlands sk19 4af Hansleton wide fields surrounding the venue giving fantstic photo ops. We are able to cater for up to 50 people in Hansleton."
+  },
+  {
+    "id": 2,
+    "title": "Maskhoff",
+    "img": "/img/amazing-wedding-venues-london.jpg",
+    "short": "Maskhoff a well suited venue for people wishing for a trishal Weddings located within the london area.",
+    "bullets": ["Weddings", "Function rooms", "Corporate meetings"],
+    "long": "located in the highlands sk19 4af Hansleton wide fields surrounding the venue giving fantstic photo ops."
+  },
+  {
+    "id": 3,
+    "title": "boclair house",
+    "img": "/img/boclair-house-1024x576.jpg",
+    "short": "The Boclair House is one of Glasgows most magnificent hotels and wedding venues.Exchange your vows in picturesque gardens and Victorian style wedding marquee. Close by Glasgow.Exclusive Use Venue.",
+    "bullets": ["Weddings", "Function rooms", "Corporate meetings"],
+    "long": " Situated in the immaculate gardens at the foot of Boclair Hill, our Glasgow wedding venue is a Tudor Gothic Mansion known for its beautiful red sandstone exterior. Offering the perfect setting, our venueboasts luxury interior including a grand ballroom for your celebration, and opulent suites for you and your guests to enjoy.With the entire venue to yourself, you can relax in the knowledge that you have complete privacy for your special day."
+  },
+  {
+    "id": 4,
+    "title": "Hansleton4",
+    "img": "/img/2015-05-09_0001.jpg",
+    "short": "Hansleton a lovely venue for any all needs including",
+    "bullets": ["Weddings", "Function rooms", "Corporate meetings"],
+    "long": "located in the highlands sk19 4af Hansleton wide fields surrounding the venue giving fantstic photo ops. We are able to cater for up to 50 people in Hansleton."
+  },
+  {
+    "id": 19,
+    "title": "Camalot",
+    "img": "https://media-cdn.tripadvisor.com/media/photo-m/1280/1d/9c/2d/ab/camelot-castle-hotel.jpg",
+    "short": "castle of camalot",
+    "bullets": ["wedding", "hotel"],
+    "long": "example of long description here"
+  },
+  {
+    "id": 412805581800,
+    "title": "Conwy Castle",
+    "img": "http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcRPKT9UGR5SnCu1FmxeWg9i55oTf3W8u3vsBeVi5iTuQ6Vqdp2nIgJylNacmkBP",
+    "short": "a castle",
+    "bullets": ["weddings", "parties", "illegal raves"],
+    "long": "this is an awesome castle"
+  }
+]

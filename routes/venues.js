@@ -2,16 +2,23 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const { title } = require('process');
-var file = './data/data.json';
+let file = './data/data.json';
 const data = require('../data/venues.json')
 const venueFile='../data/venues.json'
-const venueList = JSON.parse(fs.readFileSync('./data/venues.json',"UTF8"));
+let venueList = JSON.parse(fs.readFileSync('./data/venues.json',"UTF8"));
 const removeFunction = require('../data/functions/removeById.js');
+
+
+function updateVenueList() {
+    venueList = JSON.parse(fs.readFileSync('./data/venues.json',"UTF8"));
+}
+
 
 /**
  * defines the path of the page as well as some of the content that is displayed on the page
  */
 router.get('/',  (req, res) => {
+    updateVenueList();
     res.render('venues', {
         title: 'Venues',
         content: 'Venues follow the instuctions below to start booking your next venues',
@@ -65,27 +72,23 @@ router.get('/data', (req, res) => {
     });
 });
 
-router.get('/Success',  (req, res) => {
+router.get('/success',  (req, res) => {
     res.render('Success', {
         title: 'Success',
         username: res.locals.username
     });
 });
 router.post('/bookVenue', (req, res) => {
-    var id = Date.now()/4;
-    var first_name = req.body.first_name;
-    var last_name = req.body.last_name;
-    var contact = req.body.contact;
-    var gender = req.body.gender;
-    var venue = req.body.venue;
-    var timeSlot = req.body.timeSlot
-    var date =  Date.now();
+    let id = Date.now()/4;
+    let first_name = req.body.first_name;
+    let last_name = req.body.last_name;
+    let contact = req.body.contact;
+    let gender = req.body.gender;
+    let venue = req.body.venue;
+    let timeSlot = req.body.timeSlot
+    let date =  Date.now();
 
-    var obj = {id:id,first_name:first_name,last_name:last_name,contact:contact,gender:gender,date:date,venue:venue,timeSlot:timeSlot};
-    
-   
-
-  
+    let obj = {id,first_name,last_name,contact,gender,date,venue,timeSlot}; 
 
     //write post from values from above to file
     fs.readFile(file, (err, data) => {
@@ -110,7 +113,7 @@ router.post('/bookVenue', (req, res) => {
             }
         }
     });
-    res.redirect('/Success');
+    res.redirect('/success');
 });
 
 

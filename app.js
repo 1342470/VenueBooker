@@ -1,6 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
-var imagesDir = require('path').join(__dirname,'/Images'); 
+let imagesDir = require('path').join(__dirname,'/Images'); 
 const accessTokenMiddleware = require('./middleware/accessTokenMiddleware');
 
 const app = express();
