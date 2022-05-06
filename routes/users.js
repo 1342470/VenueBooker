@@ -5,21 +5,31 @@ const fs = require('fs');
 let message = "";
 
 //require the jsonfile
-const file = './data/data.json';
-const data = require('../data/data.json');
+//const file = './data/data.json';
+const data = async () => {
+    const file = fs.readFileSync('./data/data.json',"utf8");
+    const data = JSON.parse(file);
+    JSON.stringify(file);
+    console.log(typeof data);
+    return data;
+}
+
+//const data = require('../data/data.json');
 const VenuesData = require('../data/venues.json')
 const removeFunction = require('../data/functions/removeById.js');
 const updateFunction = require('../data/functions/updateByid.js');
+const async = require('hbs/lib/async');
 
-router.get('/', (req, res) => {
-    const total = data.length;
+
+router.get('/', async (req, res) => {
+    const total = data().length;
     const limit = parseInt(req.query.limit)<total?parseInt(req.query.limit):total;
     const page = parseInt(req.query.page) || 1;
     const start = (page - 1) * limit;
     const end = parseInt(start) + limit;
     const sortBy = req.query.sortBy || 'id';
     const sortOrder = req.query.sortOrder || 'asc';
-    const sortedData = data.sort((a, b) => {
+    const sortedData = data().sort((a, b) => {
         if (sortOrder === 'asc') {
             return a[sortBy] > b[sortBy] ? 1 : -1;
         } else {
@@ -52,18 +62,18 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/view/:id', (req, res) => {
-    const user = data.find(user => user.id === parseInt(req.params.id));
+router.get('/view/:id', async (req, res) => {
+    const user = data().find(user => user.id === parseInt(req.params.id));
     res.render('user', {
         title: 'User: ' + user.first_name,
         user: user,
-        nextUser: user.id + user.id <= data.length ? user.id + 1 : null,
+        nextUser: user.id + user.id <= data().length ? user.id + 1 : null,
         back: req.headers['referer']
     });
 });
 
-router.get('/update/:id', (req, res) => {
-    const user = data.find(user => user.id);
+router.get('/update/:id', async (req, res) => {
+    const user = data().find(user => user.id);
     res.render('updateUsers', {
         title: 'Updating  veneu: ' + user.title,
         back: req.headers['referer']
@@ -105,8 +115,8 @@ router.post('/update/', (req, res) => {
     
 });
 
-router.get('/delete/:id', (req, res) => {
-    const user = data.find(user => user.id);
+router.get('/delete/:id', async(req, res) => {
+    const user = data().find(user => user.id);
     res.render('delete', {
         title: 'Delete User: ' + user.first_name,
         user: user,
