@@ -7,29 +7,27 @@ let message = "";
 //require the jsonfile
 //const file = './data/data.json';
 const data = async () => {
-    const file = fs.readFileSync('./data/data.json',"utf8");
-    const data = JSON.parse(file);
-    JSON.stringify(file);
-    console.log(typeof data);
-    return data;
+    const file = fs.readFileSync('./data/data.json', "utf8");
+    return JSON.parse(file);
+
 }
 
 //const data = require('../data/data.json');
 const VenuesData = require('../data/venues.json')
 const removeFunction = require('../data/functions/removeById.js');
 const updateFunction = require('../data/functions/updateByid.js');
-const async = require('hbs/lib/async');
 
 
 router.get('/', async (req, res) => {
-    const total = data().length;
-    const limit = parseInt(req.query.limit)<total?parseInt(req.query.limit):total;
+    const dt = await data();
+    const total = dt.length;
+    const limit = parseInt(req.query.limit) < total ? parseInt(req.query.limit) : total;
     const page = parseInt(req.query.page) || 1;
     const start = (page - 1) * limit;
     const end = parseInt(start) + limit;
     const sortBy = req.query.sortBy || 'id';
     const sortOrder = req.query.sortOrder || 'asc';
-    const sortedData = data().sort((a, b) => {
+    const sortedData = dt.sort((a, b) => {
         if (sortOrder === 'asc') {
             return a[sortBy] > b[sortBy] ? 1 : -1;
         } else {
@@ -37,7 +35,7 @@ router.get('/', async (req, res) => {
         }
     });
     const userData = sortedData.slice(start, end);
-    const pages = Math.floor(total / limit)||1;
+    const pages = Math.floor(total / limit) || 1;
 
     router.get('/failed', (req, res) => {
         message = "failed to add User";
@@ -73,7 +71,7 @@ router.get('/view/:id', async (req, res) => {
 });
 
 router.get('/update/:id', async (req, res) => {
-    const user = data().find(user => user.id);
+    const user = await data().find(user => user.id);
     res.render('updateUsers', {
         title: 'Updating  veneu: ' + user.title,
         back: req.headers['referer']
@@ -101,7 +99,7 @@ router.post('/update/', (req, res) => {
             try {
                 const fileData = JSON.parse(data);
                 //envoke function from imported module
-                updateFunction.updateByid(id,first_name,last_name,contact,gender,date,venue,timeSlot,data)
+                updateFunction.updateByid(id, first_name, last_name, contact, gender, date, venue, timeSlot, data)
                 //Write to file data.json
                 return fs.writeFile(file, JSON.stringify(fileData), error => console.error)
                 // if any exception happen log to console
@@ -112,11 +110,11 @@ router.post('/update/', (req, res) => {
     });
 
     res.redirect('/users');
-    
+
 });
 
-router.get('/delete/:id', async(req, res) => {
-    const user = data().find(user => user.id);
+router.get('/delete/:id', async (req, res) => {
+    const user = await data().find(user => user.id);
     res.render('delete', {
         title: 'Delete User: ' + user.first_name,
         user: user,
