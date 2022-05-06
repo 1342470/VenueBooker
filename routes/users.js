@@ -9,6 +9,7 @@ const file = './data/data.json';
 const data = require('../data/data.json');
 const VenuesData = require('../data/venues.json')
 const removeFunction = require('../data/functions/removeById.js');
+const updateFunction = require('../data/functions/updateByid.js');
 
 router.get('/', (req, res) => {
     const total = data.length;
@@ -62,12 +63,46 @@ router.get('/view/:id', (req, res) => {
 });
 
 router.get('/update/:id', (req, res) => {
-    const venues = VenuesData.find(venue => venue.title);
-    res.render('update', {
-        title: 'Updating  veneu: ' + venues.title,
+    const user = data.find(user => user.id);
+    res.render('updateUsers', {
+        title: 'Updating  veneu: ' + user.title,
         back: req.headers['referer']
     });
-    console.log(venues)
+    console.log(user)
+});
+
+router.post('/update/', (req, res) => {
+    let id = req.body.id;
+    let first_name = req.body.first_name;
+    let last_name = req.body.last_name;
+    let contact = req.body.contact;
+    let gender = req.body.gender;
+    let venue = req.body.venue;
+    let date = req.body.date;
+    let timeSlot = req.body.timeSlot;
+
+    fs.readFile(file, (err, data) => {
+        if (err) {
+            // console error
+            console.error(err);
+        }
+        //if no errors are found try writing data to file
+        else {
+            try {
+                const fileData = JSON.parse(data);
+                //envoke function from imported module
+                updateFunction.updateByid(id,first_name,last_name,contact,gender,date,venue,timeSlot,data)
+                //Write to file data.json
+                return fs.writeFile(file, JSON.stringify(fileData), error => console.error)
+                // if any exception happen log to console
+            } catch (exception) {
+                console.error(exception);
+            }
+        }
+    });
+
+    res.redirect('/users');
+    
 });
 
 router.get('/delete/:id', (req, res) => {
